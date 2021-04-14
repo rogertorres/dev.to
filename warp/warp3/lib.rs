@@ -56,7 +56,6 @@ mod filters{
         let opt = warp::path::param::<u64>()
             .map(Some)
             .or_else(|_| async { 
-                // Ok(None) 
                 Ok::<(Option<u64>,), std::convert::Infallible>((None,))
             });
 
@@ -96,7 +95,6 @@ mod handlers{
     pub async fn handle_create_sim(sim: models::Simulation, db: models::Db) -> Result<impl warp::Reply, Infallible> {
         let mut map = db.lock().await;
 
-        // if let Some(result) = map.get(&sim){
         if let Some(result) = models::get_simulation(&*map, sim.id){ //0
             return Ok(warp::reply::with_status(
                 format!("Simulation #{} already exists under the name {}", result.id, result.name), 
