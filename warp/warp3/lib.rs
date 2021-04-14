@@ -95,7 +95,7 @@ mod handlers{
     pub async fn handle_create_sim(sim: models::Simulation, db: models::Db) -> Result<impl warp::Reply, Infallible> {
         let mut map = db.lock().await;
 
-        if let Some(result) = models::get_simulation(&*map, sim.id){ //0
+        if let Some(result) = models::get_simulation(&*map, sim.id){
             return Ok(warp::reply::with_status(
                 format!("Simulation #{} already exists under the name {}", result.id, result.name), 
                 StatusCode::BAD_REQUEST,
