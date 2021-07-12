@@ -4,7 +4,6 @@ FROM rust:1.49
 # 1. Create a new empty shell project
 RUN USER=root cargo new --bin holodeck
 WORKDIR /holodeck
-RUN USER=root touch "src/lib.rs"
 
 # 2. Copy our manifests
 COPY ./Cargo.lock ./Cargo.lock
