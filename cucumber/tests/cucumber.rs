@@ -30,7 +30,6 @@ mod test_steps {
             r#"^the numbers "(\d)" and "(\d)"$"#,
             // and store the values inside context, which is a Vec<String>
             |_world, context| {
-                eprintln!("contexto: {}", context.matches[0]);
                 // We start from [1] because [0] is the entire regex match
                 let world = MyWorld::Input(
                     context.matches[1].parse::<i32>().unwrap(),
