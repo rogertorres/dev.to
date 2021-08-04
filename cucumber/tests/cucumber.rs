@@ -70,7 +70,6 @@ async fn main() {
     Cucumber::<MyWorld>::new()
         .features(&["./features"])
         .steps(test_steps::steps())
-        .cli()
         .run_and_exit()
         .await
 }
