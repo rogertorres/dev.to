@@ -50,18 +50,18 @@ mod test_steps {
             }
         );
 
-builder.then_regex(
-    r#"^the User gets "(\d)" as result$"#, 
-    |world, context|{
-        match world {
-            MyWorld::Result(x) => assert_eq!(x.to_string(), context.matches[1]),
-            _ => panic!("Invalid world state"),
-        };
-        MyWorld::Init
-    }
-);
+        builder.then_regex(
+            r#"^the User gets "(\d)" as result$"#, 
+            |world, context|{
+                match world {
+                    MyWorld::Result(x) => assert_eq!(x.to_string(), context.matches[1]),
+                    _ => panic!("Invalid world state"),
+                };
+                MyWorld::Init
+            }
+        );
 
-builder
+        builder
     }
 }
 
